@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker build --tag "dotfiles.public.test:latest" . && docker run -it dotfiles.public.test bash

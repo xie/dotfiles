@@ -62,18 +62,6 @@ RED="$fg[red]"
 WHITE="$fg[white]"
 NORMAL="$reset_color"
 
-if [[ -z $DOTFILES_DIR ]]; then
-  echo "Please set your DOTFILES_DIR env variable"
-fi
-
-if [[ -n $DOTFILES_DIR ]]; then
-  if [[ -n `git --git-dir=$DOTFILES_DIR/.git --work-tree=$DOTFILES_DIR status --porcelain` ]]; then
-    echo
-    echo ""$WHITE"  dotfiles dirty ["$RED"*"$WHITE"]"$NORMAL""
-    echo
-  fi
-fi
-
 export NVM_DIR="/home/vagrant/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 

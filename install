@@ -50,8 +50,10 @@ def move_defaults
 end
 
 def install_fzf
-  system_or_exit1("git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf")
-  system_or_exit1("~/.fzf/install")
+  unless has_cmd?("fzf")
+    system_or_exit1("git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf")
+    system_or_exit1("~/.fzf/install")
+  end
 end
 
 def install_vundle

@@ -49,13 +49,6 @@ def move_defaults
   end
 end
 
-def install_fzf
-  unless has_cmd?("fzf")
-    system_or_exit1("git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf")
-    system_or_exit1("~/.fzf/install")
-  end
-end
-
 def install_vundle
   system_or_exit1("git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle")
 end
@@ -76,19 +69,16 @@ GEMS.each do |app|
   end
 end
 
-puts "3. Installing fzf"
-install_fzf
-
-puts "4. Moving existing defaults"
+puts "3. Moving existing defaults"
 move_defaults
 
-puts "5. Cloning dotfiles"
+puts "4. Cloning dotfiles"
 system_or_exit1("mkdir -p $HOME/.homesick/repos")
 system_or_exit1("git clone --recursive https://github.com/hkdsun/dotfiles.public $HOME/.homesick/repos/dotfiles.public")
 
-puts "6. Linking dotfiles"
+puts "5. Linking dotfiles"
 system_or_exit1("homsick link dotfiles.public")
 
-puts "7. Installing VIM Plugins"
+puts "6. Installing VIM Plugins"
 install_vundle
 system_or_exit1('nvim --headless --noplugin -u $HOME/.vim/vundles.vim +PluginInstall +qall')

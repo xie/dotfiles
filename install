@@ -33,6 +33,7 @@ end
 
 def install_gem(_gem)
   system_or_exit1("sudo gem install #{_gem}")
+  system_or_exit1("gem install #{_gem}")
 end
 
 def move_defaults

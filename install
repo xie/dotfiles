@@ -74,7 +74,7 @@ move_defaults
 
 puts "4. Cloning dotfiles"
 system_or_exit1("mkdir -p $HOME/.homesick/repos")
-system_or_exit1("git clone --recursive https://github.com/hkdsun/dotfiles.public $HOME/.homesick/repos/dotfiles.public")
+system("git clone --recursive https://github.com/hkdsun/dotfiles.public $HOME/.homesick/repos/dotfiles.public")
 
 puts "5. Linking dotfiles"
 system_or_exit1("homsick link dotfiles.public")

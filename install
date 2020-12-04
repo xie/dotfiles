@@ -78,7 +78,7 @@ system_or_exit1("mkdir -p $HOME/.homesick/repos")
 system("git clone --recursive https://github.com/hkdsun/dotfiles.public $HOME/.homesick/repos/dotfiles.public")
 
 puts "5. Linking dotfiles"
-system_or_exit1("homsick link dotfiles.public")
+system_or_exit1("homesick link dotfiles.public")
 
 puts "6. Installing VIM Plugins"
 install_vundle

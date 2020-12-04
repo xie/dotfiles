@@ -16,7 +16,7 @@ end
 
 def install(cmd)
   if PLATFORM == PLATFORM_LINUX
-    system("apt-get -y install #{cmd}")
+    system("sudo apt-get -y install #{cmd}")
   elsif PLATFORM == PLATFORM_DARWIN
     system("brew install #{cmd}")
   else
@@ -25,7 +25,7 @@ def install(cmd)
 end
 
 def install_gem(_gem)
-  system("gem install #{_gem}")
+  system("sudo gem install #{_gem}")
 end
 
 def move_defaults

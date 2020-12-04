@@ -47,6 +47,10 @@ def install_fzf
   system("~/.fzf/install")
 end
 
+def install_vundle
+  system("git clone https://github.com/gmarik/vundle.git home/.vim/bundle/vundle")
+end
+
 puts "1. Installing dependencies"
 DEPENDENCIES.each do |app|
   unless has_cmd?(app)
@@ -77,4 +81,5 @@ puts "6. Linking dotfiles"
 system("homsick link dotfiles.public")
 
 puts "7. Installing VIM Plugins"
-system('nvim --headless +PluginInstall +qall')
+install_vundle
+system('nvim --headless --noplugin -u $HOME/.vim/vundles.vim +PluginInstall +qall')

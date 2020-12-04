@@ -6,7 +6,7 @@ PLATFORM_DARWIN = "Darwin"
 PLATFORM_LINUX = "Linux"
 PLATFORM = `uname`.chomp
 
-DEPENDENCIES = [ "git", "vim" ]
+DEPENDENCIES = [ "git", "vim", "neovim" ]
 
 GEMS = ["homesick"]
 

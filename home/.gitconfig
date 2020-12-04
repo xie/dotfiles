@@ -1,0 +1,53 @@
+[include]
+  path = .gitconfig.personal
+[include]
+  path = .gitconfig.local
+
+[color]
+  ui = true
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
+[alias]
+  a = add
+  aa = add -A
+  ap = add -p
+  b = branch -v
+  bb = checkout -b
+  bs = branch --sort=committerdate
+  c = commit -m
+  co = checkout
+  cc = checkout -
+  cm = checkout master
+  l = log --graph --date=short
+  p = push
+  pp = pull
+  s = status
+  squash=rebase -i $(git merge-base HEAD master)
+  st = status
+  diffm = diff master
+  touched=show --name-only --pretty='format:'
+  uncommit = reset --soft HEAD^
+  unstage = reset HEAD
+  branch-name = "!git rev-parse --abbrev-ref HEAD"
+  follow= "!f() { git log --topo-order -u -L $2,${3:-$2}:$1; }; f"
+  pub = "!git push -u origin $(git branch-name)"
+[push]
+  default = upstream
+[core]
+  autocrlf = false
+  editor = nvim --noplugin
+  excludesfile = ~/.gitignore
+  commitGraph = true
+[diff]
+  mnemonicprefix = true
+  algorithm = patience
+  tool = vimdiff
+[difftool]
+  prompt = false

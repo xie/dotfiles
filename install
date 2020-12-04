@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+
+PLATFORM_DARWIN = "Darwin"
+PLATFORM_LINUX = "Linux"
+PLATFORM = `uname`.chomp
+
+DEPENDENCIES = [ "git", "vim" ]
+
+GEMS = ["homesick"]
+
+
+def has_cmd?(cmd)
+  system("which #{cmd}", STDOUT => '/dev/null') == true
+end
+
+def install(cmd)
+  if PLATFORM == PLATFORM_LINUX
+    system("apt-get -y install #{cmd}")
+  elsif PLATFORM == PLATFORM_DARWIN
+    system("brew install #{cmd}")
+  else
+    raise "Unsupported Platform: #{PLATFORM}"
+  end
+end
+
+def install_gem(_gem)
+  system("gem install #{_gem}")
+end
+
+DEPENDENCIES.each do |app|
+  unless has_cmd?(app)
+    puts "Installing: #{app}"
+    install(app)
+  end
+end
+
+GEMS.each do |app|
+  unless has_cmd?(app)
+    puts "Installing Ruby Gem: #{app}"
+    install_gem(app)
+  end
+end
+
+system("mkdir -p $HOME/.homesick/repos")
+if ARGV[1] == "--clone-self"
+  system("git clone --recursive https://github.com/hkdsun/dotfiles.public $HOME/.homesick/repos/dotfiles.public")
+end
+
+system("homsick link dotfiles.public")

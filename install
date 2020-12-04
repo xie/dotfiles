@@ -43,16 +43,16 @@ GEMS.each do |app|
   end
 end
 
-if File.exist?("~/.zshrc")
-  puts "WARN: Moving ~/.zshrc to ~/.zshrc.default"
+if File.exist?("#{ENV['HOME']}/.zshrc")
+  puts "WARN: Moving #{ENV['HOME']}/.zshrc to #{ENV['HOME']}/.zshrc.default"
   puts "      This file is load by the dotfile .zshrc"
-  File.mv("~/.zshrc", "~/.zshrc.default")
+  File.mv("#{ENV['HOME']}/.zshrc", "#{ENV['HOME']}/.zshrc.default")
 end
 
-if File.exist?("~/.gitconfig")
-  puts "WARN: Moving ~/.gitconfig to ~/.gitconfig.default"
+if File.exist?("#{ENV['HOME']}/.gitconfig")
+  puts "WARN: Moving #{ENV['HOME']}/.gitconfig to #{ENV['HOME']}/.gitconfig.default"
   puts "      This file is load by the dotfile .gitconfig"
-  File.mv("~/.gitconfig", "~/.gitconfig.default")
+  File.mv("#{ENV['HOME']}/.gitconfig", "#{ENV['HOME']}/.gitconfig.default")
 end
 
 

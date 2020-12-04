@@ -9,23 +9,29 @@ PLATFORM = `uname`.chomp
 DEPENDENCIES = [ "git", "vim", "neovim", "silversearcher-ag", "zsh" ]
 GEMS = ["homesick"]
 
+def system_or_exit1(cmd)
+  unless system(cmd)
+    puts "ERROR: Command failed. Aborting."
+    exit 1
+  end
+end
 
 def has_cmd?(cmd)
-  system("which #{cmd}", STDOUT => '/dev/null') == true
+  system_or_exit1("which #{cmd}", STDOUT => '/dev/null') == true
 end
 
 def install(cmd)
   if PLATFORM == PLATFORM_LINUX
-    system("sudo apt-get -y install #{cmd}")
+    system_or_exit1("sudo apt-get -y install #{cmd}")
   elsif PLATFORM == PLATFORM_DARWIN
-    system("brew install #{cmd}")
+    system_or_exit1("brew install #{cmd}")
   else
     raise "Unsupported Platform: #{PLATFORM}"
   end
 end
 
 def install_gem(_gem)
-  system("sudo gem install #{_gem}")
+  system_or_exit1("sudo gem install #{_gem}")
 end
 
 def move_defaults
@@ -43,12 +49,12 @@ def move_defaults
 end
 
 def install_fzf
-  system("git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf")
-  system("~/.fzf/install")
+  system_or_exit1("git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf")
+  system_or_exit1("~/.fzf/install")
 end
 
 def install_vundle
-  system("git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle")
+  system_or_exit1("git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle")
 end
 
 puts "1. Installing dependencies"
@@ -74,12 +80,12 @@ puts "4. Moving existing defaults"
 move_defaults
 
 puts "5. Cloning dotfiles"
-system("mkdir -p $HOME/.homesick/repos")
-system("git clone --recursive https://github.com/hkdsun/dotfiles.public $HOME/.homesick/repos/dotfiles.public")
+system_or_exit1("mkdir -p $HOME/.homesick/repos")
+system_or_exit1("git clone --recursive https://github.com/hkdsun/dotfiles.public $HOME/.homesick/repos/dotfiles.public")
 
 puts "6. Linking dotfiles"
-system("homsick link dotfiles.public")
+system_or_exit1("homsick link dotfiles.public")
 
 puts "7. Installing VIM Plugins"
 install_vundle
-system('nvim --headless --noplugin -u $HOME/.vim/vundles.vim +PluginInstall +qall')
+system_or_exit1('nvim --headless --noplugin -u $HOME/.vim/vundles.vim +PluginInstall +qall')

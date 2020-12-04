@@ -77,4 +77,4 @@ puts "6. Linking dotfiles"
 system("homsick link dotfiles.public")
 
 puts "7. Installing VIM Plugins"
-system('nvim --headless +PlugInstall +qall')
+system('nvim --headless +PluginInstall +qall')

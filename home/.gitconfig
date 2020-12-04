@@ -2,6 +2,8 @@
   path = .gitconfig.personal
 [include]
   path = .gitconfig.local
+[include]
+  path = .gitconfig.default
 
 [color]
   ui = true

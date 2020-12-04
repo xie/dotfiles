@@ -9,8 +9,8 @@ PLATFORM = `uname`.chomp
 DEPENDENCIES = [ "git", "vim", "neovim", "silversearcher-ag", "zsh" ]
 GEMS = ["homesick"]
 
-def system_or_exit1(cmd)
-  unless system(cmd)
+def system_or_exit1(*args)
+  unless system(*args)
     puts "ERROR: Command failed. Aborting."
     exit 1
   end

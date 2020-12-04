@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require 'fileutils'
+
 PLATFORM_DARWIN = "Darwin"
 PLATFORM_LINUX = "Linux"
 PLATFORM = `uname`.chomp
@@ -46,13 +48,13 @@ end
 if File.exist?("#{ENV['HOME']}/.zshrc")
   puts "WARN: Moving #{ENV['HOME']}/.zshrc to #{ENV['HOME']}/.zshrc.default"
   puts "      This file is load by the dotfile .zshrc"
-  File.mv("#{ENV['HOME']}/.zshrc", "#{ENV['HOME']}/.zshrc.default")
+  FileUtils.mv("#{ENV['HOME']}/.zshrc", "#{ENV['HOME']}/.zshrc.default")
 end
 
 if File.exist?("#{ENV['HOME']}/.gitconfig")
   puts "WARN: Moving #{ENV['HOME']}/.gitconfig to #{ENV['HOME']}/.gitconfig.default"
   puts "      This file is load by the dotfile .gitconfig"
-  File.mv("#{ENV['HOME']}/.gitconfig", "#{ENV['HOME']}/.gitconfig.default")
+  FileUtils.mv("#{ENV['HOME']}/.gitconfig", "#{ENV['HOME']}/.gitconfig.default")
 end
 
 

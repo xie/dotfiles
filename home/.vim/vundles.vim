@@ -23,7 +23,6 @@ Plugin 'gmarik/vundle'
 
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim'
-  Plugin 'zchee/deoplete-go', { 'do': 'make' }
 else
   Plugin 'Shougo/neocomplete.git'
 endif
@@ -92,7 +91,6 @@ Plugin 'jtratner/vim-flavored-markdown.git'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'scrooloose/syntastic.git'
 Plugin 'SirVer/ultisnips'
-Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
 Plugin 'vim-ruby/vim-ruby.git'

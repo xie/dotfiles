@@ -82,4 +82,4 @@ system_or_exit1("homesick link dotfiles.public")
 
 puts "6. Installing VIM Plugins"
 install_vundle
-system_or_exit1('nvim --headless --noplugin -u $HOME/.vim/vundles.vim +PluginInstall +qall')
+system_or_exit1('nvim --headless --noplugin -u $HOME/.vim/vundles.vim +PluginInstall +UpdateRemotePlugins +qall')

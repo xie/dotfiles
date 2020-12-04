@@ -18,7 +18,7 @@ def system_or_exit1(*args)
 end
 
 def has_cmd?(cmd)
-  system_or_exit1("which #{cmd}", STDOUT => '/dev/null') == true
+  system("which #{cmd}", STDOUT => '/dev/null') == true
 end
 
 def install(cmd)

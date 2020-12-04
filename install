@@ -75,10 +75,10 @@ move_defaults
 
 puts "4. Cloning dotfiles"
 system_or_exit1("mkdir -p $HOME/.homesick/repos")
-system("git clone --recursive https://github.com/hkdsun/dotfiles.public $HOME/.homesick/repos/dotfiles.public")
+system("git clone --recursive https://github.com/hkdsun/dotfiles.spin $HOME/.homesick/repos/dotfiles.spin")
 
 puts "5. Linking dotfiles"
-system_or_exit1("homesick link dotfiles.public")
+system_or_exit1("homesick link dotfiles.spin")
 
 puts "6. Installing VIM Plugins"
 install_vundle

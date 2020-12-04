@@ -3,5 +3,5 @@
 * To install a snapshot:
 
 ```
-curl -fsSL https://raw.githubusercontent.com/hkdsun/dotfiles.public/main/install | ruby
+curl -fsSL https://raw.githubusercontent.com/hkdsun/dotfiles.spin/main/install | ruby
 ```

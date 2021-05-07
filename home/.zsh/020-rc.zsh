@@ -78,5 +78,3 @@ fi
 
 export PATH="$PATH:$HOME/.yarn/bin"
 export PATH="$PATH:$HOME/.localbin"
-
-export LESS="-j.5 -r"
